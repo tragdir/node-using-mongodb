@@ -1,13 +1,24 @@
 import mongoose from 'mongoose';
-import { required } from 'nodemon/lib/config';
-const  { Schema } = mongoose;
 
-const scheme = new Schema({
-    name: String, required,
-    description: String, required,
-    category: String,
-    price: { type: Number } ,
-    created_date: { type: Date, default: Date.now }
+const Schema = mongoose.Schema;
+
+export const ProductSchema = new Schema({
+    name: {
+        type: String, 
+        required: "enter a name:"
+        },
+    description:{
+        type: String,
+        required: "enter a description"
+    },
+    category:{
+        type: String
+    },
+    price: {
+        type: Number
+    },
+    created_date: {
+        type: Date,
+        default: Date.now
+    }
 });
-
-export default scheme;

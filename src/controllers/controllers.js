@@ -1,9 +1,15 @@
 import mongoose from 'mongoose';
-import scheme from 'models.js';
+import ProductSchema from '../models/models'
 
-let product = new mongoose.model('Product', scheme);
+const Product = new mongoose.model('Product', ProductSchema);
 
-let addnewProduct = () => {
+export const addnewProduct = (req, res) => {
     let newProduct = new Product(req.body);
-    
+    newProduct.save((err, Product) => {
+        if (err) {
+            res.send(err);
+        }
+        res.json(Product);
+    });
+
 }
